@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
 
-export default function CampaignForm({ errors, touched, values, status }) {
+function CampaignForm({ errors, touched, values, status }) {
   const [campaign, setCampaign] = useState([]);
 
   useEffect(() => {
