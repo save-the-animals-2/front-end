@@ -4,11 +4,26 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { createStore, applyMiddleware, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+import { logger } from 'redux-logger';
+import { organizationReducer } from './redux/reducers/organizationReducer';
+import { supporterReducer } from './redux/reducers/supporterReducer';
+
+const rootReducer = combineReducers({
+  organizationReducer,
+  supporterReducer,
+});
+
+const store = createStore(rootReducer, applyMiddleware(thunk, logger));
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+  <Provider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </Provider>,
   document.getElementById('root')
 );
 
