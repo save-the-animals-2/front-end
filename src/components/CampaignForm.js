@@ -8,6 +8,7 @@ export default function CampaignForm({ errors, touched, values, status }) {
 
   useEffect(() => {
     status && setCampaign(campaign => [...campaign, status]);
+    console.log(campaign);
   }, [status]);
 
   return (
@@ -122,7 +123,75 @@ export default function CampaignForm({ errors, touched, values, status }) {
 const FormikCampaignForm = withFormik({
   mapPropsToValues({ title }) {
     return {
-      name: title || '',
+      title: title || '',
+      description: '',
+      location: '',
+      species: '',
+      urgency_level: '',
+      funding_goal: '',
+      deadline: '',
     };
   },
-});
+
+  validationSchema: Yup.object().shape({
+    title: Yup.string().required('Please fill this out!'),
+    description: Yup.string().required('Please fill this out!'),
+    location: Yup.string().required('Please fill this out!'),
+    species: Yup.string()
+      .oneOf([
+        'African Forest Elephant',
+        'African Penguin',
+        'African Wild Dog',
+        'Albatross',
+        'Armadillo',
+        'Asian Elephant',
+        'Asiatic Black Bear',
+        'Axolotl',
+        'Aye Aye',
+        'Bactrian Camel',
+        'Bandicoot',
+        'Bear',
+        'Bengal Tiger',
+        'Blue Whale',
+        'Bonobo',
+        'Brown Bear',
+        'Butterfly Fish',
+        'Chimpanzee',
+        'Chinchilla',
+        'Dhole',
+        'Eastern Lowland Gorilla',
+        'Fin Whale',
+        'Fishing Cat',
+        'Fossa',
+        'Galapagos Penguin',
+        'Galapagos Tortoise',
+        'Giraffe',
+        'Golden Lion Tamarin',
+        'Grizzly Bear',
+        'Honey Bee',
+        'Hummingbird',
+        'Indian Elephant',
+        'Indian Rhinoceros',
+        'Indochinese Tiger',
+        'Indri',
+      ])
+      .required('Please Choose an Animal'),
+    urgency_level: '',
+    funding_goal: '',
+    deadline: '',
+  }),
+
+  handleSubmit(values, { setStatus, resetForm }) {
+    console.log('Submitting form: ', values);
+
+    axios
+      .post('', values)
+      .then(response => {
+        console.log('Success:', response);
+        setStatus(response.data);
+        resetForm();
+      })
+      .catch(error => console.log('Error:', error));
+  },
+})(CampaignForm);
+export default FormikCampaignForm;
