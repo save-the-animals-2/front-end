@@ -85,8 +85,44 @@ export default function CampaignForm({ errors, touched, values, status }) {
         </Field>
         {touched.species && errors.species && <p>{errors.species}</p>}
 
-        <Field />
+        <Field
+          type="text"
+          name="urgency-level"
+          placeholder="Urgency Level"
+          value={values.urgency_level}
+        />
+        {touched.urgency_level && errors.urgency_level && (
+          <p>{errors.urgency_level}</p>
+        )}
+
+        <Field
+          type="text"
+          name="funding-goal"
+          placeholder="Funding Goal"
+          value={values.funding_goal}
+        />
+        {touched.funding_goal && errors.funding_goal && (
+          <p>{errors.funding_goal}</p>
+        )}
+
+        <Field
+          type="date"
+          name="deadline"
+          placeholder="Deadline"
+          value={values.deadline}
+        />
+        {touched.deadline && errors.deadline && <p>{errors.deadline}</p>}
+
+        <button type="submit">Create Campaign</button>
       </Form>
     </div>
   );
 }
+
+const FormikCampaignForm = withFormik({
+  mapPropsToValues({ title }) {
+    return {
+      name: title || '',
+    };
+  },
+});
