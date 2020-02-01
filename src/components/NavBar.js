@@ -6,8 +6,9 @@ export default function NavBar() {
     <div>
       <h1>Nav</h1>
       <Link to="/">Home</Link>
-      <Link to="/supporter">Support</Link>
-      <Link to="/organization">Organization</Link>
+      <Link to="/campaigns">Campaigns</Link>
+      <Link to="/login">Login</Link>
+      <Link to="/signUp">Sign Up</Link>
     </div>
   );
 }
