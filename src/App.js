@@ -8,17 +8,18 @@ import SignUp from './components/SignUp';
 import Login from './components/Login';
 import CampaignsPage from './components/CampaignsPage';
 import CampaignForm from './components/CampaignForm';
+import ProtectedRoute from './utils/protectedRoute';
 
 function App() {
   return (
     <div className="App">
       <Route exact path="/" component={HomePage} />
-      <Route path="/organization" component={OrganizationDashboard} />
-      <Route path="/supporter" component={SupporterDashboard} />
+      <ProtectedRoute path="/organization" component={OrganizationDashboard} />
+      <ProtectedRoute path="/supporter" component={SupporterDashboard} />
       <Route path="/login" component={Login} />
       <Route path="/signUp" component={SignUp} />
-      <Route path="/campaigns" component={CampaignsPage} />
-      <Route path="/campaignform" component={CampaignForm} />
+      <ProtectedRoute path="/campaigns" component={CampaignsPage} />
+      <ProtectedRoute path="/campaignform" component={CampaignForm} />
     </div>
   );
 }
