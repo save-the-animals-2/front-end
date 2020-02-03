@@ -3,7 +3,7 @@ import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 
 const LoginForm = ({ errors, touched, values, status }) => {
-  const [logInUsers, setLogInUsers] = useState([]);
+  const [logInUser, setLogInUser] = useState([]);
 
   useEffect(() => {
     status && setLogInUser(logInUser => [...logInUser, status]);
