@@ -9,6 +9,7 @@ import Login from './components/Login';
 import CampaignsPage from './components/CampaignsPage';
 import CampaignForm from './components/CampaignForm';
 import ProtectedRoute from './utils/protectedRoute';
+import './joseR.css';
 
 function App() {
   return (
