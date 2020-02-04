@@ -21,7 +21,7 @@ const SuperSignUpDiv = styled.div`
   margin-left: 14%;
 `;
 const FooterDiv = styled.footer`
-  background-color: grey;
+  background-color: #d3d3d3;
   margin-top: 10%;
   border-radius: 10px;
 `;
@@ -47,8 +47,9 @@ export default function HomePage() {
                 <strong>Features:</strong>
               </CardSubtitle>
               <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                Supporters can view all posted campaigns, and filter by
+                location, species, and issues as well as choose their favorite
+                ones!
               </CardText>
               <Button className="joseSbuttonCard" color="info">
                 <Link to="/signUp" className="NavButtons">
@@ -72,8 +73,8 @@ export default function HomePage() {
                 <strong>Features:</strong>
               </CardSubtitle>
               <CardText>
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                Sign up to list, edit, and update your campaigns to reach to our
+                supporters!.
               </CardText>
               <Button className="joseSbuttonCard" color="info">
                 <Link to="/signUp" className="NavButtons">
