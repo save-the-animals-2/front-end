@@ -6,7 +6,7 @@ const LoginForm = ({ errors, touched, values, status }) => {
   const [logInUsers, setLogInUsers] = useState([]);
 
   useEffect(() => {
-    status && setLogInUser(logInUser => [...logInUser, status]);
+    status && setLogInUsers(logInUser => [...logInUser, status]);
   }, [status]);
 
   return <div>Login</div>;

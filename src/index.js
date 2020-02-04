@@ -10,6 +10,7 @@ import thunk from 'redux-thunk';
 import { logger } from 'redux-logger';
 import { organizationReducer } from './redux/reducers/organizationReducer';
 import { supporterReducer } from './redux/reducers/supporterReducer';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const rootReducer = combineReducers({
   organizationReducer,
