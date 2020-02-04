@@ -1,0 +1,39 @@
+.trevor-form-container {
+  max-width: 50%;
+  border: 2px solid black;
+  box-shadow: 5px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  /* align-items: center; */
+  /* align-content: center; */
+  /* justify-items: center; */
+  margin-left: 400px;
+  margin-top: 100px;
+}
+
+.trevor-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  padding: 10px;
+}
+
+.trevor-input {
+  width: 90%;
+  display: flex;
+  border: 1px solid black;
+  margin: 10px;
+}
+
+.trevor-button {
+  align-content: center;
+  width: 40%;
+  background: black;
+  color: white;
+  font-size: 1.1rem;
+  border: 1px solid white;
+  box-shadow: 2px 4px black;
+}
