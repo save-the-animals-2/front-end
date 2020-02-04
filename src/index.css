@@ -11,3 +11,133 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* login form style */
+
+.login-form-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 3%;
+  padding-bottom: 200px;
+  border: silver 2px solid;
+  border-radius: 2px;
+  box-shadow: gray 3px 5px;
+  font-size: 25px;
+}
+
+.login-form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.login-inputs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1%;
+}
+
+.input {
+  width: 60%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  margin-bottom: 1%;
+  margin-left: 20%;
+}
+
+.login-button {
+  margin-bottom: 1%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 50%;
+  margin-left: 4%;
+}
+
+.alert-message-boxes {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+}
+
+.alert-message {
+  margin-bottom: 1%;
+}
+
+.signup-button {
+  margin-bottom: 1%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 50%;
+  margin-left: 4%;
+  background-color: gray;
+  color: white;
+}
+
+/* signup form style */
+
+.signup-form-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 40%;
+  margin-left: 30%;
+  margin-top: 3%;
+  padding-bottom: 20px;
+  border: silver 2px solid;
+  border-radius: 2px;
+  box-shadow: gray 3px 5px;
+  font-size: 25px;
+}
+
+.signup-form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+
+.signup-inputs {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1%;
+}
+
+.signup-input {
+  width: 60%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  margin-bottom: 1%;
+  margin-left: 20%;
+}
+
+.signup-create-button {
+  margin-bottom: 1%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 50%;
+  margin-left: 4%;
+}
+
+.alert-message-boxes {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+}
+
+.alert-message {
+  margin-bottom: 1%;
+}
+
+.signup-login-button {
+  margin-bottom: 1%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  width: 50%;
+  margin-left: 4%;
+  background-color: gray;
+  color: white;
+}
