@@ -76,3 +76,9 @@ hr:after {
   opacity: 0.7;
 }
 /* Carouse Image styling Ends here */
+/* login form style */
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
