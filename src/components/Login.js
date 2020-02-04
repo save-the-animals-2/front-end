@@ -15,7 +15,7 @@ const LoginForm = ({ errors, touched, values, status }) => {
 
   return (
     <>
-      {/* <NavBar/> */}
+      <NavBar />
       <div className="login-form-box">
         <h1>Log In To Get Started</h1>
         <Form className="login-form">
@@ -24,14 +24,14 @@ const LoginForm = ({ errors, touched, values, status }) => {
               className="input"
               type="text"
               name="username"
-              placeholder="enter your email"
+              placeholder="email address"
               value={values.username}
             />
             <Field
               className="input"
               type="text"
               name="password"
-              placeholder="enter your password"
+              placeholder="password"
               value={values.password}
             />
           </div>
