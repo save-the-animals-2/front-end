@@ -14,7 +14,7 @@ const SignupForm = ({ errors, touched, values, status }) => {
 
   return (
     <>
-      {/* <NavBar/> */}
+      <NavBar />
       <div className="signup-form-box">
         <h1>Create Your New Account</h1>
         <Form className="signup-form">
@@ -23,28 +23,28 @@ const SignupForm = ({ errors, touched, values, status }) => {
               className="signup-input"
               type="text"
               name="firstname"
-              placeholder="enter your first name"
+              placeholder="first name"
               value={values.firstname}
             />
             <Field
               className="signup-input"
               type="text"
               name="lastname"
-              placeholder="enter your last name"
+              placeholder="last name"
               value={values.lastname}
             />
             <Field
               className="signup-input"
               type="text"
               name="username"
-              placeholder="enter your email as your user name"
+              placeholder="email address as your user name"
               value={values.username}
             />
             <Field
               className="signup-input"
               type="text"
               name="password"
-              placeholder="enter your password"
+              placeholder="password"
               value={values.password}
             />
           </div>
