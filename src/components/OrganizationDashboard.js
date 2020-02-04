@@ -8,7 +8,7 @@ export default function OrganizationDashboard() {
       <NavBar />
       Organization Dashboard
       <CampaignList />
-      {/*Button to the Campaign Form */}
+      <button>Add New Campaign</button>
     </div>
   );
 }

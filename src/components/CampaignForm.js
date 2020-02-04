@@ -2,128 +2,142 @@ import React, { useEffect, useState } from 'react';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import NavBar from './NavBar';
+import '../trevor.css';
 
 function CampaignForm({ errors, touched, values, status }) {
   const [campaign, setCampaign] = useState([]);
 
   useEffect(() => {
-    status && setCampaign(campaign => [...campaign, status]);
+    status && setCampaign(() => [...campaign, status]);
     console.log(campaign);
   }, [status]);
 
   return (
     <div>
-      <Form>
-        <h1>Campaign Form</h1>
-        <Field
-          type="text"
-          name="campaign-title"
-          placeholder="Campaign Title"
-          value={values.title}
-        />
-        {touched.title && errors.title && <p>{errors.title}</p>}
+      <NavBar />
+      <div className="trevor-form-container">
+        <Form className="trevor-form">
+          <h1>Campaign Form</h1>
+          <Field
+            type="text"
+            name="title"
+            placeholder="Campaign Title"
+            value={values.title}
+            className="trevor-input"
+          />
+          {touched.title && errors.title && <p>{errors.title}</p>}
 
-        <Field
-          component="textarea"
-          type="text"
-          name="campaign-description"
-          placeholder="Campaign Description"
-          value={values.description}
-        />
-        {touched.description && errors.description && (
-          <p>{errors.description}</p>
-        )}
+          <Field
+            component="textarea"
+            type="text"
+            name="description"
+            placeholder="Campaign Description"
+            value={values.description}
+            className="trevor-input"
+          />
+          {touched.description && errors.description && (
+            <p>{errors.description}</p>
+          )}
 
-        <Field
-          type="text"
-          name="location"
-          placeholder="Campaign Location"
-          value={values.location}
-        />
-        {touched.location && errors.location && <p>{errors.location}</p>}
+          <Field
+            type="text"
+            name="location"
+            placeholder="Campaign Location"
+            value={values.location}
+            className="trevor-input"
+          />
+          {touched.location && errors.location && <p>{errors.location}</p>}
 
-        <Field
-          component="select"
-          name="endangered-animal"
-          value={values.species}
-        >
-          <option>Choose an Animal</option>
-          <option>African Forest Elephant</option>
-          <option>African Penguin</option>
-          <option>African Wild Dog</option>
-          <option>Albatross</option>
-          <option>Armadillo</option>
-          <option>Asian Elephant</option>
-          <option>Asiatic Black Bear</option>
-          <option>Axolotl</option>
-          <option>Aye Aye</option>
-          <option>Bactrian Camel</option>
-          <option>Bandicoot</option>
-          <option>Bear</option>
-          <option>Bengal Tiger</option>
-          <option>Blue Whale</option>
-          <option>Bonobo</option>
-          <option>Brown Bear</option>
-          <option>Butterfly Fish</option>
-          <option>Chimpanzee</option>
-          <option>Chinchilla</option>
-          <option>Dhole</option>
-          <option>Eastern Lowland Gorilla</option>
-          <option>Fin Whale</option>
-          <option>Fishing Cat</option>
-          <option>Fossa</option>
-          <option>Galapagos Penguin</option>
-          <option>Galapagos Tortoise</option>
-          <option>Giraffe</option>
-          <option>Golden Lion Tamarin</option>
-          <option>Grizzly Bear</option>
-          <option>Honey Bee</option>
-          <option>Hummingbird</option>
-          <option>Indian Elephant</option>
-          <option>Indian Rhinoceros</option>
-          <option>Indochinese Tiger</option>
-          <option>Indri</option>
-        </Field>
-        {touched.species && errors.species && <p>{errors.species}</p>}
+          <Field
+            component="select"
+            name="species"
+            value={values.species}
+            className="trevor-input"
+          >
+            <option>Choose an Animal</option>
+            <option>African Forest Elephant</option>
+            <option>African Penguin</option>
+            <option>African Wild Dog</option>
+            <option>Albatross</option>
+            <option>Armadillo</option>
+            <option>Asian Elephant</option>
+            <option>Asiatic Black Bear</option>
+            <option>Axolotl</option>
+            <option>Aye Aye</option>
+            <option>Bactrian Camel</option>
+            <option>Bandicoot</option>
+            <option>Bear</option>
+            <option>Bengal Tiger</option>
+            <option>Blue Whale</option>
+            <option>Bonobo</option>
+            <option>Brown Bear</option>
+            <option>Butterfly Fish</option>
+            <option>Chimpanzee</option>
+            <option>Chinchilla</option>
+            <option>Dhole</option>
+            <option>Eastern Lowland Gorilla</option>
+            <option>Fin Whale</option>
+            <option>Fishing Cat</option>
+            <option>Fossa</option>
+            <option>Galapagos Penguin</option>
+            <option>Galapagos Tortoise</option>
+            <option>Giraffe</option>
+            <option>Golden Lion Tamarin</option>
+            <option>Grizzly Bear</option>
+            <option>Honey Bee</option>
+            <option>Hummingbird</option>
+            <option>Indian Elephant</option>
+            <option>Indian Rhinoceros</option>
+            <option>Indochinese Tiger</option>
+            <option>Indri</option>
+          </Field>
+          {touched.species && errors.species && <p>{errors.species}</p>}
 
-        <Field
-          type="text"
-          name="urgency-level"
-          placeholder="Urgency Level"
-          value={values.urgency_level}
-        />
-        {touched.urgency_level && errors.urgency_level && (
-          <p>{errors.urgency_level}</p>
-        )}
+          <Field
+            type="text"
+            name="urgency_level"
+            placeholder="Urgency Level"
+            value={values.urgency_level}
+            className="trevor-input"
+          />
+          {touched.urgency_level && errors.urgency_level && (
+            <p>{errors.urgency_level}</p>
+          )}
 
-        <Field
-          type="text"
-          name="funding-goal"
-          placeholder="Funding Goal"
-          value={values.funding_goal}
-        />
-        {touched.funding_goal && errors.funding_goal && (
-          <p>{errors.funding_goal}</p>
-        )}
+          <Field
+            type="text"
+            name="funding_goal"
+            placeholder="Funding Goal"
+            value={values.funding_goal}
+            className="trevor-input"
+          />
+          {touched.funding_goal && errors.funding_goal && (
+            <p>{errors.funding_goal}</p>
+          )}
 
-        <Field
-          type="date"
-          name="deadline"
-          placeholder="Deadline"
-          value={values.deadline}
-        />
-        {touched.deadline && errors.deadline && <p>{errors.deadline}</p>}
+          <Field
+            type="date"
+            name="deadline"
+            placeholder="Deadline"
+            value={values.deadline}
+            className="trevor-input"
+          />
+          {touched.deadline && errors.deadline && <p>{errors.deadline}</p>}
 
-        <button type="submit">Create Campaign</button>
-      </Form>
+          <button className="trevor-button" type="submit">
+            Create Campaign
+          </button>
+        </Form>
+      </div>
     </div>
   );
 }
 
 const FormikCampaignForm = withFormik({
-  mapPropsToValues({ title }) {
+  mapPropsToValues({ campaign }) {
     return {
-      title: title || '',
+      title: campaign || '',
       description: '',
       location: '',
       species: '',
@@ -185,7 +199,7 @@ const FormikCampaignForm = withFormik({
     console.log('Submitting form: ', values);
 
     axios
-      .post('', values)
+      .post('https://save-the-animals-app.herokuapp.com/api/campaigns', values)
       .then(response => {
         console.log('Success:', response);
         setStatus(response.data);
