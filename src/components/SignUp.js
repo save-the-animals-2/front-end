@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import NavBar from './NavBar';
 import '../index.css';
+import axios from 'axios';
 
 const SignupForm = ({ errors, touched, values, status }) => {
   const [supUsers, setSupUsers] = useState([]);
@@ -15,33 +16,33 @@ const SignupForm = ({ errors, touched, values, status }) => {
   return (
     <>
       <NavBar />
-      <div className="signup-form-box">
-        <h1>Create Your New Account</h1>
-        <Form className="signup-form">
-          <div className="signup-inputs">
+      <div className="fnu-signup-form-box">
+        <h1 className="fnu-signup-form-title">Create Your New Account</h1>
+        <Form className="fnu-signup-form">
+          <div className="fnu-signup-inputs">
             <Field
-              className="signup-input"
+              className="fnu-signup-input"
               type="text"
               name="firstname"
               placeholder="first name"
               value={values.firstname}
             />
             <Field
-              className="signup-input"
+              className="fnu-signup-input"
               type="text"
               name="lastname"
               placeholder="last name"
               value={values.lastname}
             />
             <Field
-              className="signup-input"
+              className="fnu-signup-input"
               type="text"
               name="username"
               placeholder="email address as your user name"
               value={values.username}
             />
             <Field
-              className="signup-input"
+              className="fnu-signup-input"
               type="text"
               name="password"
               placeholder="password"
@@ -49,27 +50,29 @@ const SignupForm = ({ errors, touched, values, status }) => {
             />
           </div>
           <div>
-            <button className="signup-create-button">Click to sign up</button>
+            <button className="fnu-signup-create-button">
+              Click to sign up
+            </button>
           </div>
           <Link to="/login">
             <div>
-              <button className="signup-login-button">
-                Click to log in if you have an account already
+              <button className="fnu-signup-login-button">
+                Log in if you have an account already
               </button>
             </div>
           </Link>
-          <div className="alert-message-boxes">
+          <div className="fnu-alert-message-boxes">
             {touched.firstname && errors.firstname && (
-              <strong className="alert-message">{errors.firstname}</strong>
+              <strong className="fnu-alert-message">{errors.firstname}</strong>
             )}
             {touched.lastname && errors.lastname && (
-              <strong className="alert-message">{errors.lastname}</strong>
+              <strong className="fnu-alert-message">{errors.lastname}</strong>
             )}
             {touched.username && errors.username && (
-              <strong className="alert-message">{errors.username}</strong>
+              <strong className="fnu-alert-message">{errors.username}</strong>
             )}
             {touched.password && errors.password && (
-              <strong className="alert-message">{errors.password}</strong>
+              <strong className="fnu-alert-message">{errors.password}</strong>
             )}
           </div>
         </Form>
@@ -97,6 +100,17 @@ const FormikSignupForm = withFormik({
 
   handleSubmit(values, { setStatus, resetForm }) {
     console.log('Submitting form', values);
+
+    axios
+      .post('https://save-the-animals-app.herokuapp.com/api/register', values)
+      .then(res => {
+        console.log('Success:', res);
+        setStatus(res.data);
+        resetForm();
+      })
+      .catch(err => {
+        console.log('Error:', err.response);
+      });
   },
 })(SignupForm);
 
