@@ -7,10 +7,10 @@ import SignUp from './SignUp';
 import '../index.css';
 
 const LoginForm = ({ errors, touched, values, status }) => {
-  const [orgUsers, setOrgUsers] = useState([]);
+  const [orgUser, setOrgUser] = useState([]);
 
   useEffect(() => {
-    status && setOrgUsers(orgUser => [...orgUser, status]);
+    status && setOrgUser(orgUser => [...orgUser, status]);
   }, [status]);
 
   return (
