@@ -10,7 +10,7 @@ const LoginForm = ({ errors, touched, values, status }) => {
   const [orgUser, setOrgUser] = useState([]);
 
   useEffect(() => {
-    status && setOrgUser(orgUser => [...orgUser, status]);
+    status && setOrgUser(() => [...orgUser, status]);
   }, [status]);
 
   return (
@@ -62,6 +62,8 @@ const FormikLoginForm = withFormik({
     return {
       username: orgUsers || '',
       password: '',
+      user_type: false,
+      org_id: '',
     };
   },
 
@@ -72,18 +74,34 @@ const FormikLoginForm = withFormik({
 
   handleSubmit(values, { setStatus, resetForm, props }) {
     console.log('Submitting form', values);
-
-    axiosWithAuth()
-      .post('https://save-the-animals-app.herokuapp.com/api/login', values)
-      .then(res => {
-        console.log('Success:', res);
-        setStatus(res.data);
-        resetForm();
-        props.history.push('/campaigns');
-      })
-      .catch(err => {
-        console.log('Error:', err.response);
-      });
+    if (values.user_type === true) {
+      values.user_type = 'organization';
+      axiosWithAuth()
+        .post('https://save-the-animals-app.herokuapp.com/api/login', values)
+        .then(res => {
+          console.log('Success:', res);
+          setStatus(res.data);
+          resetForm();
+          props.history.push('/campaigns');
+        })
+        .catch(err => {
+          console.log('Error:', err.response);
+        });
+    } else {
+      values.user_type = 'supporter';
+      values.org_id = null;
+      axiosWithAuth()
+        .post('https://save-the-animals-app.herokuapp.com/api/login', values)
+        .then(res => {
+          console.log('Success:', res);
+          setStatus(res.data);
+          resetForm();
+          props.history.push('/');
+        })
+        .catch(err => {
+          console.log('Error:', err.response);
+        });
+    }
   },
 })(LoginForm);
 
