@@ -3,8 +3,8 @@ import { Form, Field, withFormik } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import NavBar from './NavBar';
-import axios from 'axios';
 import '../index.css';
+import { axiosWithAuth } from '../utils/getToken';
 
 const LoginForm = ({ errors, touched, values, status }) => {
   const [orgUser, setOrgUser] = useState([]);
@@ -70,15 +70,16 @@ const FormikLoginForm = withFormik({
     password: Yup.string().required('*Please enter your password!!'),
   }),
 
-  handleSubmit(values, { setStatus, resetForm }) {
+  handleSubmit(values, { setStatus, resetForm, props }) {
     console.log('Submitting form', values);
 
-    axios
+    axiosWithAuth()
       .post('https://save-the-animals-app.herokuapp.com/api/login', values)
       .then(res => {
         console.log('Success:', res);
         setStatus(res.data);
         resetForm();
+        props.history.push('/campaigns');
       })
       .catch(err => {
         console.log('Error:', err.response);

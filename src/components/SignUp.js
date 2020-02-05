@@ -5,12 +5,11 @@ import * as Yup from 'yup';
 import NavBar from './NavBar';
 import '../index.css';
 import axios from 'axios';
-
 const SignupForm = ({ errors, touched, values, status }) => {
   const [supUsers, setSupUsers] = useState([]);
 
   useEffect(() => {
-    status && setSupUsers(supUser => [...supUser, status]);
+    status && setSupUsers(() => [...supUsers, status]);
   }, [status]);
 
   return (
@@ -109,15 +108,22 @@ const FormikSignupForm = withFormik({
     user_type: Yup.bool(),
   }),
 
-  handleSubmit(values, { setStatus, resetForm }) {
+  handleSubmit(values, { setStatus, resetForm, props }) {
+    if (values.user_type === true) {
+      values.user_type = 'organization';
+    } else {
+      values.user_type = 'supporter';
+      values.org_id = null;
+    }
     console.log('Submitting form', values);
-
     axios
       .post('https://save-the-animals-app.herokuapp.com/api/register', values)
       .then(res => {
         console.log('Success:', res);
         setStatus(res.data);
         resetForm();
+        localStorage.setItem('token', res.data.token);
+        props.history.push('/campaigns');
       })
       .catch(err => {
         console.log('Error:', err.response);
