@@ -1,1 +1,17 @@
 /* /index.html 200
+
+[[redirects]]
+  from = "/login"
+  to = "/login"
+  status = 301
+
+  [[redirects]]
+  from = "/signUp"
+  to = "/signUp"
+  status = 301
+
+  [[redirects]]
+  from = "/signUp"
+  to = "/signUp"
+  status = 301
+  
