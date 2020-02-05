@@ -23,31 +23,44 @@ const SignupForm = ({ errors, touched, values, status }) => {
             <Field
               className="fnu-signup-input"
               type="text"
-              name="firstname"
-              placeholder="first name"
-              value={values.firstname}
-            />
-            <Field
-              className="fnu-signup-input"
-              type="text"
-              name="lastname"
-              placeholder="last name"
-              value={values.lastname}
-            />
-            <Field
-              className="fnu-signup-input"
-              type="text"
               name="username"
-              placeholder="email address as your user name"
+              placeholder="username"
               value={values.username}
             />
             <Field
               className="fnu-signup-input"
-              type="text"
+              type="password"
               name="password"
               placeholder="password"
               value={values.password}
             />
+            <Field
+              className="fnu-signup-input"
+              type="text"
+              name="email"
+              placeholder="email address"
+              value={values.email}
+            />
+            <label className="fnu-signup-checkbox-box">
+              <h4 className="fnu-signup-checkbox-title">
+                Are you an organization?
+              </h4>
+              <Field
+                className="fnu-signup-checkbox"
+                type="checkbox"
+                name="user_type"
+                checked={values.user_type}
+              />
+            </label>
+            {values.user_type && (
+              <Field
+                className="fnu-signup-input"
+                type="number"
+                name="org_id"
+                placeholder="organization id"
+                value={values.org_id}
+              />
+            )}
           </div>
           <div>
             <button className="fnu-signup-create-button">
@@ -62,17 +75,14 @@ const SignupForm = ({ errors, touched, values, status }) => {
             </div>
           </Link>
           <div className="fnu-alert-message-boxes">
-            {touched.firstname && errors.firstname && (
-              <strong className="fnu-alert-message">{errors.firstname}</strong>
-            )}
-            {touched.lastname && errors.lastname && (
-              <strong className="fnu-alert-message">{errors.lastname}</strong>
-            )}
             {touched.username && errors.username && (
               <strong className="fnu-alert-message">{errors.username}</strong>
             )}
             {touched.password && errors.password && (
               <strong className="fnu-alert-message">{errors.password}</strong>
+            )}
+            {touched.email && errors.email && (
+              <strong className="fnu-alert-message">{errors.email}</strong>
             )}
           </div>
         </Form>
@@ -84,18 +94,19 @@ const SignupForm = ({ errors, touched, values, status }) => {
 const FormikSignupForm = withFormik({
   mapPropsToValues({ supUsers }) {
     return {
-      firstname: supUsers || '',
-      lastname: '',
-      username: '',
+      username: supUsers || '',
       password: '',
+      email: '',
+      user_type: false,
+      org_id: '',
     };
   },
 
   validationSchema: Yup.object().shape({
-    firstname: Yup.string().required('*Please enter your firstname!!'),
-    lastname: Yup.string().required('*Please enter your lastname!!'),
     username: Yup.string().required('*Please enter your username!!'),
     password: Yup.string().required('*Please enter your password!!'),
+    email: Yup.string().required('*Please enter your email address!!'),
+    user_type: Yup.bool(),
   }),
 
   handleSubmit(values, { setStatus, resetForm }) {

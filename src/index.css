@@ -127,6 +127,20 @@ code {
   margin-left: 20%;
 }
 
+.fnu-signup-checkbox-box {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.fnu-signup-checkbox-title {
+  margin-right: 3%;
+}
+
+.fnu-signup-checkbox {
+  margin-top: 1%;
+}
+
 .fnu-signup-create-button {
   margin-bottom: 1%;
   padding-top: 10px;

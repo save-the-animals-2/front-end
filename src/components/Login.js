@@ -24,7 +24,7 @@ const LoginForm = ({ errors, touched, values, status }) => {
               className="fnu-input"
               type="text"
               name="username"
-              placeholder="email address"
+              placeholder="username"
               value={values.username}
             />
             <Field
