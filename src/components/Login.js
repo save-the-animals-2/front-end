@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import NavBar from './NavBar';
 import '../index.css';
-import { axiosWithAuth } from '../utils/getToken';
+import api from '../utils/api';
 
 const LoginForm = ({ errors, touched, values, status }) => {
   const [orgUser, setOrgUser] = useState([]);
@@ -76,7 +76,7 @@ const FormikLoginForm = withFormik({
     console.log('Submitting form', values);
     if (values.user_type === true) {
       values.user_type = 'organization';
-      axiosWithAuth()
+      api()
         .post('https://save-the-animals-app.herokuapp.com/api/login', values)
         .then(res => {
           console.log('Success:', res);
@@ -90,12 +90,13 @@ const FormikLoginForm = withFormik({
     } else {
       values.user_type = 'supporter';
       values.org_id = null;
-      axiosWithAuth()
+      api()
         .post('https://save-the-animals-app.herokuapp.com/api/login', values)
         .then(res => {
           console.log('Success:', res);
           setStatus(res.data);
           resetForm();
+          localStorage.setItem('token', res.data.token);
           props.history.push('/');
         })
         .catch(err => {
