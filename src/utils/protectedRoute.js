@@ -21,7 +21,7 @@ function ProtectedRoute(props) {
           return <Component {...renderProps} />;
         } else {
           // We are not logged in, so redirect to the signin page
-          return <Redirect to="/signin" />;
+          return <Redirect to="/signUp" />;
         }
       }}
     />

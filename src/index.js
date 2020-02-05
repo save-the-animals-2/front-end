@@ -10,11 +10,15 @@ import thunk from 'redux-thunk';
 import { logger } from 'redux-logger';
 import { organizationReducer } from './redux/reducers/organizationReducer';
 import { supporterReducer } from './redux/reducers/supporterReducer';
+import { loginReducer } from './redux/reducers/loginReducer';
+import { signUpReducer } from './redux/reducers/signUpReducer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const rootReducer = combineReducers({
   organizationReducer,
   supporterReducer,
+  loginReducer,
+  signUpReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
