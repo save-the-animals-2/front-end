@@ -19,7 +19,7 @@ function App() {
       <ProtectedRoute path="/supporter" component={SupporterDashboard} />
       <Route path="/login" component={Login} />
       <Route path="/signUp" component={SignUp} />
-      <ProtectedRoute path="/campaigns" component={CampaignsPage} />
+      <Route path="/campaigns" component={CampaignsPage} />
       <ProtectedRoute path="/campaignform" component={CampaignForm} />
     </div>
   );

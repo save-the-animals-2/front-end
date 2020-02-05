@@ -1,13 +1,27 @@
 import React from 'react';
 import CampaignThumbnail from './CampaignThumbnail';
+import { Grid } from 'semantic-ui-react';
 
-export default function CampaignList() {
+function CampaignList(props) {
+  console.log('Campaigns props from CampaignsPage:', props.campaigns);
+
   return (
     <div>
-      {/* we are gonna map through the data and pass into the CampaignCard*/}
-      <CampaignThumbnail />
+      <Grid columns={2} divided>
+        <Grid.Row>
+          <Grid.Column>
+            {props.campaigns.map(campaign => {
+              return (
+                <CampaignThumbnail campaign={campaign} key={campaign.id} />
+              );
+            })}
+          </Grid.Column>
+        </Grid.Row>
+      </Grid>
     </div>
   );
 }
+
+export default CampaignList;
 
 //Map of CampaignThumbnail
