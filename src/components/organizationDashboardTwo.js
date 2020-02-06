@@ -60,7 +60,9 @@ const OrganizationDashboardTwoCampaignsList = ({ camp }) => {
       <h4 className="fnu-org-dash-campaign-header">
         Funding Goal: {funding_goal}
       </h4>
-      <button className="fnu-org-dash-campaign-btn">More details</button>
+      <Link key={camp.id} to={`/orgdashcard/${camp.id}`}>
+        <button className="fnu-org-dash-campaign-btn">More details</button>
+      </Link>
     </div>
   );
 };
