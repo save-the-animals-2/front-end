@@ -1,10 +1,10 @@
-import { axiosWithAuth } from '../../utils/getToken';
+import api from '../../utils/api';
 
 export const fetchingCampaigns = () => {
   return dispatch => {
     dispatch({ type: 'FETCHING_CAMPAIGNS' });
 
-    axiosWithAuth()
+    api()
       .get(`/api/campaigns`)
       .then(res => {
         dispatch({ type: 'FETCHING_CAMPAIGNS_SUCCESSFUL', payload: res.data });

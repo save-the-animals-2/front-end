@@ -11,6 +11,7 @@ import CampaignsPage from './components/CampaignsPage';
 import CampaignForm from './components/CampaignForm';
 import ProtectedRoute from './utils/protectedRoute';
 import './joseR.css';
+import Logout from './components/LogOut';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       <Route path="/signUp" component={SignUp} />
       <Route path="/campaigns" component={CampaignsPage} />
       <ProtectedRoute path="/campaignform" component={CampaignForm} />
+      <ProtectedRoute path="/logout" component={Logout} />
       <Route path="/organizationtwo" component={OrganizationDashboardTwo} />
     </div>
   );

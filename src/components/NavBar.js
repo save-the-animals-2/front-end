@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from 'reactstrap';
 import styled from 'styled-components';
 import logo from '../images/logo.png';
+import { getToken } from '../utils/api';
 
 const NavDiv = styled.div`
   margin-top: 2%;
@@ -18,6 +19,8 @@ const BottonsDiv = styled.div`
 `;
 
 export default function NavBar() {
+  const signedIn = getToken();
+
   return (
     <div>
       <NavDiv>
@@ -34,25 +37,36 @@ export default function NavBar() {
             <Link to="/" className="NavButtons">
               Home
             </Link>
-          </Button>{' '}
+          </Button>
           &nbsp;&nbsp;&nbsp;
           <Button color="secondary">
             <Link to="/campaigns" className="NavButtons">
               Campaigns
             </Link>
-          </Button>{' '}
+          </Button>
           &nbsp;&nbsp;&nbsp;
-          <Button color="secondary">
-            <Link to="/login" className="NavButtons">
-              Login
-            </Link>
-          </Button>{' '}
+          {!signedIn && (
+            <Button color="secondary">
+              <Link to="/login" className="NavButtons">
+                Login
+              </Link>
+            </Button>
+          )}
           &nbsp;&nbsp;&nbsp;
-          <Button color="info">
-            <Link to="/signUp" className="NavButtons">
-              Sign Up
-            </Link>
-          </Button>{' '}
+          {!signedIn && (
+            <Button color="info">
+              <Link to="/signUp" className="NavButtons">
+                Sign Up
+              </Link>
+            </Button>
+          )}
+          {signedIn && (
+            <Button color="info">
+              <Link to="/logout" className="NavButtons">
+                LogOut
+              </Link>
+            </Button>
+          )}
           &nbsp;&nbsp;&nbsp;
         </BottonsDiv>
       </NavDiv>
