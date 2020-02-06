@@ -3,6 +3,7 @@ import './App.css';
 import { Route } from 'react-router-dom';
 import HomePage from './components/HomePage';
 import OrganizationDashboard from './components/OrganizationDashboard';
+import OrganizationDashboardTwo from './components/organizationDashboardTwo';
 import SupporterDashboard from './components/SupporterDashboard';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
@@ -23,6 +24,7 @@ function App() {
       <Route path="/campaigns" component={CampaignsPage} />
       <ProtectedRoute path="/campaignform" component={CampaignForm} />
       <ProtectedRoute path="/logout" component={Logout} />
+      <Route path="/organizationtwo" component={OrganizationDashboardTwo} />
     </div>
   );
 }
