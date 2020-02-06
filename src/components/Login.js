@@ -80,6 +80,7 @@ const FormikLoginForm = withFormik({
         setStatus(res.data.user.user_type);
         resetForm();
         localStorage.setItem('token', res.data.token);
+        localStorage.setItem('org_id', res.data.user.org_id);
         props.history.push(`/${res.data.user.user_type}`);
       })
       .catch(err => {

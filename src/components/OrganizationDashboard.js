@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createCampaigns } from '../redux/actions/organizationActions';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import NavBar from './NavBar';
+import CampaignForm from './CampaignForm';
 
 export default function OrganizationDashboard(props) {
   const getUserId = localStorage.getItem('org_id');
@@ -44,7 +45,7 @@ export default function OrganizationDashboard(props) {
       <NavBar />
       Organization Dashboard
       {/* <CampaignList /> */}
-      <button>Add New Campaign</button>
+      <CampaignForm />
     </div>
   );
 }
