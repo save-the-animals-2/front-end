@@ -3,14 +3,14 @@ import { Form, Field, withFormik } from 'formik';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import NavBar from './NavBar';
-import axios from 'axios';
 import '../index.css';
+import api from '../utils/api';
 
 const LoginForm = ({ errors, touched, values, status }) => {
   const [orgUser, setOrgUser] = useState([]);
 
   useEffect(() => {
-    status && setOrgUser(orgUser => [...orgUser, status]);
+    status && setOrgUser(() => [...orgUser, status]);
   }, [status]);
 
   return (
@@ -24,7 +24,7 @@ const LoginForm = ({ errors, touched, values, status }) => {
               className="fnu-input"
               type="text"
               name="username"
-              placeholder="email address"
+              placeholder="username"
               value={values.username}
             />
             <Field
@@ -62,6 +62,8 @@ const FormikLoginForm = withFormik({
     return {
       username: orgUsers || '',
       password: '',
+      user_type: false,
+      org_id: '',
     };
   },
 
@@ -70,19 +72,37 @@ const FormikLoginForm = withFormik({
     password: Yup.string().required('*Please enter your password!!'),
   }),
 
-  handleSubmit(values, { setStatus, resetForm }) {
+  handleSubmit(values, { setStatus, resetForm, props }) {
     console.log('Submitting form', values);
-
-    axios
-      .post('https://save-the-animals-app.herokuapp.com/api/login', values)
-      .then(res => {
-        console.log('Success:', res);
-        setStatus(res.data);
-        resetForm();
-      })
-      .catch(err => {
-        console.log('Error:', err.response);
-      });
+    if (values.user_type === true) {
+      values.user_type = 'organization';
+      api()
+        .post('https://save-the-animals-app.herokuapp.com/api/login', values)
+        .then(res => {
+          console.log('Success:', res);
+          setStatus(res.data);
+          resetForm();
+          props.history.push('/campaigns');
+        })
+        .catch(err => {
+          console.log('Error:', err.response);
+        });
+    } else {
+      values.user_type = 'supporter';
+      values.org_id = null;
+      api()
+        .post('https://save-the-animals-app.herokuapp.com/api/login', values)
+        .then(res => {
+          console.log('Success:', res);
+          setStatus(res.data);
+          resetForm();
+          localStorage.setItem('token', res.data.token);
+          props.history.push('/');
+        })
+        .catch(err => {
+          console.log('Error:', err.response);
+        });
+    }
   },
 })(LoginForm);
 

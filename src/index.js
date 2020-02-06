@@ -12,6 +12,8 @@ import { organizationReducer } from './redux/reducers/organizationReducer';
 import { supporterReducer } from './redux/reducers/supporterReducer';
 import { loginReducer } from './redux/reducers/loginReducer';
 import { signUpReducer } from './redux/reducers/signUpReducer';
+import { campaignsReducer } from './redux/reducers/campaignsReducer';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const rootReducer = combineReducers({
@@ -19,6 +21,7 @@ const rootReducer = combineReducers({
   supporterReducer,
   loginReducer,
   signUpReducer,
+  campaignsReducer,
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger));
