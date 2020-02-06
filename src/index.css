@@ -178,13 +178,15 @@ code {
 .fnu-org-dash-button {
   padding: 10px 40px;
   font-size: 20px;
+  background-color: #36343e;
+  color: white;
 }
 
 .fnu-org-dash-campaigns-box {
   display: flex;
   flex-direction: column;
   /* flex-wrap: wrap; */
-  margin-top: 3%;
+  margin-top: 2%;
 }
 
 .fnu-org-dash-campaign-box {
@@ -196,10 +198,17 @@ code {
 
 .fnu-org-dash-campaign-photo {
   width: 1000px;
-  margin-bottom: 2%;
+  margin-bottom: 1%;
   border-radius: 10px;
 }
 
 .fnu-org-dash-campaign-header {
   padding-left: 15px;
+}
+
+.fnu-org-dash-campaign-btn {
+  margin-top: 1%;
+  margin-left: 1.5%;
+  background-color: #36343e;
+  color: white;
 }
