@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-/* login form style */
+/* fnu login form style */
 
 .fnu-login-form-box {
   display: flex;
@@ -83,7 +83,7 @@ code {
   color: white;
 }
 
-/* signup form style */
+/* fnu signup form style */
 
 .fnu-signup-form-box {
   display: flex;
@@ -167,4 +167,39 @@ code {
   margin-left: 2%;
   background-color: gray;
   color: white;
+}
+
+/* fnu organization dashboard two stlye */
+
+.fnu-org-dash-button-box {
+  margin-top: 3%;
+}
+
+.fnu-org-dash-button {
+  padding: 10px 40px;
+  font-size: 20px;
+}
+
+.fnu-org-dash-campaigns-box {
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  margin-top: 3%;
+}
+
+.fnu-org-dash-campaign-box {
+  width: 100%;
+  padding: 30px 180px;
+  text-align: left;
+  /* border: black solid 10px; */
+}
+
+.fnu-org-dash-campaign-photo {
+  width: 1000px;
+  margin-bottom: 2%;
+  border-radius: 10px;
+}
+
+.fnu-org-dash-campaign-header {
+  padding-left: 15px;
 }
