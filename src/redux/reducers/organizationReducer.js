@@ -11,13 +11,12 @@ import {
 } from '../actions/organizationActions';
 
 const initialState = {
-  isLoading: true,
+  isLoading: false,
   campaigns: [],
   error: null,
 };
 
 export const organizationReducer = (state = initialState, action) => {
-  console.log(state);
   switch (action.type) {
     case UPDATE_CAMPAIGN_START:
       return {
