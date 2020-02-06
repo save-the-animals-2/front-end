@@ -1,13 +1,49 @@
-import React from 'react';
-import CampaignList from './CampaignList';
+import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { createCampaigns } from '../redux/actions/organizationActions';
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import NavBar from './NavBar';
 
-export default function OrganizationDashboard() {
+export default function OrganizationDashboard(props) {
+  const getUserId = localStorage.getItem('org_id');
+  const [item, setItem] = useState({
+    id: '',
+    title: '',
+    description: '',
+    photo_url: '',
+    location: '',
+    species: '',
+    urgency_level: '',
+    funding_goal: '',
+    deadline: '',
+    org_id: getUserId,
+  });
+
+  const handleChange = event => {
+    setItem({
+      ...item,
+      [event.target.name]: event.target.value,
+    });
+    console.log(item.price);
+  };
+
+  const handleSubmit = event => {
+    event.preventDefault();
+    props.createCampaigns(item);
+    setItem({
+      name: '',
+      city: '',
+      country: '',
+      price: [],
+      description: '',
+    });
+  };
+
   return (
     <div>
       <NavBar />
       Organization Dashboard
-      <CampaignList />
+      {/* <CampaignList /> */}
       <button>Add New Campaign</button>
     </div>
   );
