@@ -2,11 +2,24 @@ import React, { useEffect, useState } from 'react';
 import { Form, Field, withFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
-import NavBar from './NavBar';
 import '../trevor.css';
+import api from '../utils/api';
 
 function CampaignForm({ errors, touched, values, status }) {
   const [campaign, setCampaign] = useState([]);
+
+  const [update, setUpdated] = useState({
+    title: '',
+    description: '',
+    photo_url:
+      'https://cms.fauna-flora.org/wp-content/uploads/2017/11/conserving-migrating-raptors-in-western-georgia-2000x1200.jpg',
+    location: '',
+    species: '',
+    urgency_level: '',
+    funding_goal: '',
+    deadline: '',
+    org_id: localStorage.getItem('org_id'),
+  });
 
   useEffect(() => {
     status && setCampaign(() => [...campaign, status]);
@@ -15,10 +28,9 @@ function CampaignForm({ errors, touched, values, status }) {
 
   return (
     <div>
-      <NavBar />
       <div className="trevor-form-container">
         <Form className="trevor-form">
-          <h1>Campaign Form</h1>
+          <h1>Create new Campaign!</h1>
           <Field
             type="text"
             name="title"
@@ -139,6 +151,8 @@ const FormikCampaignForm = withFormik({
     return {
       title: campaign || '',
       description: '',
+      photo_url:
+        'https://cms.fauna-flora.org/wp-content/uploads/2017/11/conserving-migrating-raptors-in-western-georgia-2000x1200.jpg',
       location: '',
       species: '',
       urgency_level: '',
@@ -198,8 +212,8 @@ const FormikCampaignForm = withFormik({
   handleSubmit(values, { setStatus, resetForm }) {
     console.log('Submitting form: ', values);
 
-    axios
-      .post('https://save-the-animals-app.herokuapp.com/api/campaigns', values)
+    api()
+      .post('/api/campaigns', values)
       .then(response => {
         console.log('Success:', response);
         setStatus(response.data);

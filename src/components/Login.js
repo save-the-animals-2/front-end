@@ -62,7 +62,6 @@ const FormikLoginForm = withFormik({
     return {
       username: orgUsers || '',
       password: '',
-      user_type: false,
       org_id: '',
     };
   },
@@ -74,35 +73,19 @@ const FormikLoginForm = withFormik({
 
   handleSubmit(values, { setStatus, resetForm, props }) {
     console.log('Submitting form', values);
-    if (values.user_type === true) {
-      values.user_type = 'organization';
-      api()
-        .post('https://save-the-animals-app.herokuapp.com/api/login', values)
-        .then(res => {
-          console.log('Success:', res);
-          setStatus(res.data);
-          resetForm();
-          props.history.push('/campaigns');
-        })
-        .catch(err => {
-          console.log('Error:', err.response);
-        });
-    } else {
-      values.user_type = 'supporter';
-      values.org_id = null;
-      api()
-        .post('https://save-the-animals-app.herokuapp.com/api/login', values)
-        .then(res => {
-          console.log('Success:', res);
-          setStatus(res.data);
-          resetForm();
-          localStorage.setItem('token', res.data.token);
-          props.history.push('/');
-        })
-        .catch(err => {
-          console.log('Error:', err.response);
-        });
-    }
+    api()
+      .post('https://save-the-animals-app.herokuapp.com/api/login', values)
+      .then(res => {
+        console.log('Success:', res);
+        setStatus(res.data.user.user_type);
+        resetForm();
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('org_id', res.data.user.org_id);
+        props.history.push(`/${res.data.user.user_type}`);
+      })
+      .catch(err => {
+        console.log('Error:', err.response);
+      });
   },
 })(LoginForm);
 
