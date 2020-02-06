@@ -1,10 +1,10 @@
-import { axiosWithAuth } from '../../utils/getToken';
+import api from '../../utils/api';
 
 //CREATE A CAMPAIGN
 export const createCampaigns = incomingState => {
   return dispatch => {
     dispatch({ type: 'LOADING_CREATE' });
-    axiosWithAuth()
+    api()
       .post(
         'https://save-the-animals-app.herokuapp.com/api/campaigns',
         incomingState
@@ -22,11 +22,8 @@ export const updateCampaign = (id, incomingSecondState) => {
   return dispatch => {
     dispatch({ type: 'LOADING_EDIT' });
 
-    axiosWithAuth()
-      .put(
-        `https://save-the-animals-app.herokuapp.com/api/campaigns/${id}`,
-        incomingSecondState
-      )
+    api()
+      .put(`/api/campaigns/${id}`, incomingSecondState)
       .then(res => {
         console.log('coming from editCampaign:', res.data);
         dispatch({ type: 'EDIT_CAMPAIGN', payload: res.data });
@@ -42,10 +39,8 @@ export const deleteCampaign = incomingOrgID => {
   return dispatch => {
     dispatch({ type: 'LOADING_DELETE' });
 
-    axiosWithAuth()
-      .delete(
-        `https://save-the-animals-app.herokuapp.com/api/campaigns/${incomingOrgID}`
-      )
+    api()
+      .delete(`/api/campaigns/${incomingOrgID}`)
       .then(res => {
         dispatch({ type: 'DELETE_CAMPAIGN_SUCCESSFUL', payload: res.data });
         console.log('coming from deleteCampaign:', res.data);
@@ -60,7 +55,7 @@ export const deleteCampaign = incomingOrgID => {
 export const getCampaigns = (org_id, item) => {
   return dispatch => {
     dispatch({ type: 'LOADING_CAMPAIGNS' });
-    axiosWithAuth()
+    api()
       .get(
         `https://save-the-animals-app.herokuapp.com/api/organizations/${org_id}`,
         item
