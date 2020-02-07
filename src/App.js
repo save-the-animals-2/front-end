@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
 import { Route } from 'react-router-dom';
 import HomePage from './components/HomePage';
@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <Route exact path="/" component={HomePage} />
       <ProtectedRoute path="/organization" component={OrganizationDashboard} />
-      <ProtectedRoute path="/supporter" component={SupporterDashboard} />
+      <ProtectedRoute path="/supporter/:id" component={SupporterDashboard} />
       <Route path="/login" component={Login} />
       <Route path="/signUp" component={SignUp} />
       <Route path="/campaigns" component={CampaignsPage} />

@@ -1,23 +1,24 @@
 const initialState = {
-  id: '',
   isFetching: false,
   isAdding: false,
-  campaign: '',
-  campaigns: [],
+  favCampaigns: [],
+  favCampaign: {
+    campaign_id: '',
+  },
 };
 
 export const supporterReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'FETCHING_DATA':
+    case 'FETCHING_FAV_DATA':
       return {
         ...state,
         isFetching: true,
       };
-    case 'FETCHING_SUCCESSFUL':
+    case 'FETCHING_FAV_SUCCESSFUL':
       return {
         ...state,
         isFetching: false,
-        campaigns: [...state.campaigns, action.payload],
+        favCampaigns: [...state.favCampaigns, action.payload],
       };
     case 'ADD_TO_FAVOURITE':
       return {
@@ -28,7 +29,7 @@ export const supporterReducer = (state = initialState, action) => {
       return {
         ...state,
         isAdding: false,
-        campaign: action.payload,
+        favCampaign: action.payload,
       };
     default:
       return state;

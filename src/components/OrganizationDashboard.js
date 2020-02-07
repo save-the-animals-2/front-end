@@ -6,6 +6,7 @@ import NavBar from './NavBar';
 
 export default function OrganizationDashboard(props) {
   const getUserId = localStorage.getItem('org_id');
+
   const [item, setItem] = useState({
     id: '',
     title: '',
