@@ -53,9 +53,9 @@ export const getCampaigns = () => {
     dispatch({ type: FETCH_USER_ITEMS_START });
 
     api()
-      .get(`/api/organizations/:${localStorage.getItem('org_id')}`)
+      .get(`/api/organizations/${localStorage.getItem('org_id')}`)
       .then(res => {
-        console.log('coming from actions', res);
+        console.log('coming from actions', res.data);
         dispatch({ type: FETCH_USER_ITEMS_SUCCESS, payload: res.data });
       })
       .catch(err => {

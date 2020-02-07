@@ -8,8 +8,6 @@ import { getCampaigns } from '../redux/actions/organizationActions';
 import styled from 'styled-components';
 
 function OrganizationDashboard(props) {
-  console.log(props.isInfoLoading);
-
   const StyledH1 = styled.h1`
     font-size: 2.5rem;
     font-weight: 300;
@@ -45,6 +43,7 @@ function OrganizationDashboard(props) {
           </StyledDiv>
 
           <Section>{/* card will be here */}</Section>
+
           <CampaignForm />
         </div>
       )}

@@ -12,7 +12,19 @@ import {
 
 const initialState = {
   isLoading: false,
-  campaigns: [],
+  campaigns: {
+    id: '',
+    title: '',
+    description: '',
+    photo_url: '',
+    location: '',
+    species: '',
+    urgency_level: '',
+    funding_goal: '',
+    deadline: '',
+    org_id: '',
+    org_name: '',
+  },
   error: null,
 };
 
