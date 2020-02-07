@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import axios from 'axios';
 import '../trevor.css';
 import api from '../utils/api';
+import NavBar from './NavBar';
 
 function CampaignForm({ errors, touched, values, status }) {
   const [campaign, setCampaign] = useState([]);
@@ -28,6 +29,7 @@ function CampaignForm({ errors, touched, values, status }) {
 
   return (
     <div>
+      <NavBar />
       <div className="trevor-form-container">
         <Form className="trevor-form">
           <h1>Create new Campaign!</h1>
@@ -103,6 +105,43 @@ function CampaignForm({ errors, touched, values, status }) {
             <option>Indian Rhinoceros</option>
             <option>Indochinese Tiger</option>
             <option>Indri</option>
+            <option>Kakapo</option>
+            <option>Killer Whale</option>
+            <option>Macaw</option>
+            <option>Magellanic Penguin</option>
+            <option>Malayan Tiger</option>
+            <option>Manatee</option>
+            <option>Markhor</option>
+            <option>Mongoose</option>
+            <option>Mountain Gorilla</option>
+            <option>Numbat</option>
+            <option>Parrot</option>
+            <option>Pied Tamarin</option>
+            <option>Proboscis Monkey</option>
+            <option>Pygmy Hippopotamus</option>
+            <option>Red Panda</option>
+            <option>Rhinoceros</option>
+            <option>River Dolphin</option>
+            <option>Sea Otter</option>
+            <option>Sea Turtle</option>
+            <option>Seahorse</option>
+            <option>Siberian Tiger</option>
+            <option>Sloth</option>
+            <option>South China Tiger</option>
+            <option>Spectacled Bear</option>
+            <option>Sri Lankan Elephant</option>
+            <option>Sumatran Tiger</option>
+            <option>Tapir</option>
+            <option>Tarsier</option>
+            <option>Tiger</option>
+            <option>Tortoise</option>
+            <option>Vulture</option>
+            <option>Water Buffalo</option>
+            <option>White Tiger</option>
+            <option>Wildebeast</option>
+            <option>Wombat</option>
+            <option>Yellow-Eyed Penguin</option>
+            <option>Zebra</option>
           </Field>
           {touched.species && errors.species && <p>{errors.species}</p>}
 
@@ -202,6 +241,43 @@ const FormikCampaignForm = withFormik({
         'Indian Rhinoceros',
         'Indochinese Tiger',
         'Indri',
+        'Kakapo',
+        'Killer Whale',
+        'Macaw',
+        'Magellanic Penguin',
+        'Malayan Tiger',
+        'Manatee',
+        'Markhor',
+        'Mongoose',
+        'Mountain Gorilla',
+        'Numbat',
+        'Parrot',
+        'Pied Tamarin',
+        'Proboscis Monkey',
+        'Pygmy Hippopotamus',
+        'Red Panda',
+        'Rhinoceros',
+        'River Dolphin',
+        'Sea Otter',
+        'Sea Turtle',
+        'Seahorse',
+        'Siberian Tiger',
+        'Sloth',
+        'South China Bear',
+        'Spectacled Bear',
+        'Sri Lanken Elephant',
+        'Sumantran Tiger',
+        'Tapir',
+        'Tarsier',
+        'Tiger',
+        'Tortoise',
+        'Vulture',
+        'Water Buffalo',
+        'White Tiger',
+        'Wildebeast',
+        'Wombat',
+        'Yellow-Eyed Penguin',
+        'Zebra',
       ])
       .required('Please Choose an Animal'),
     urgency_level: '',
