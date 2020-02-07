@@ -1,63 +1,65 @@
 import api from '../../utils/api';
 
-//CREATE A CAMPAIGN
-export const createCampaigns = incomingState => {
+//EDIT A CAMPAIGN for an specific organization
+export const UPDATE_CAMPAIGN_START = 'UPDATE_USER_BIO_START';
+export const UPDATE_CAMPAIGN_SUCCESS = 'UPDATE_USER_BIO_SUCCESS';
+export const UPDATE_CAMPAIGN_ERROR = 'UPDATE_USER_BIO_ERROR';
+
+export function updateCampaign(updatedInfo) {
   return dispatch => {
-    dispatch({ type: 'LOADING_CREATE' });
-    api()
-      .post('/api/campaigns', incomingState)
-      .then(res => {
-        dispatch({ type: 'CREATED_CAMPAIGN', payload: res.data });
-      })
-      .catch(error => {
-        dispatch({ type: 'ADD_ITEMS_ERROR', payload: error.message });
-      });
-  };
-};
-//EDIT A CAMPAIGN
-export const updateCampaign = (id, incomingSecondState) => {
-  return dispatch => {
-    dispatch({ type: 'LOADING_EDIT' });
+    dispatch({ type: UPDATE_CAMPAIGN_START });
 
     api()
-      .put(`/api/campaigns/${id}`, incomingSecondState)
+      .put(`/api/campaigns/${localStorage.getItem('org_id')}`, updatedInfo)
       .then(res => {
-        console.log('coming from editCampaign:', res.data);
-        dispatch({ type: 'EDIT_CAMPAIGN', payload: res.data });
+        dispatch({ type: UPDATE_CAMPAIGN_SUCCESS, payload: res.data });
+        console.log(res.data);
       })
       .catch(err => {
-        console.log('coming from editCampaign:', err);
+        dispatch({ type: UPDATE_CAMPAIGN_ERROR, payload: err });
       });
   };
-};
+}
 
-//DELETING A CAMPAIGN
-export const deleteCampaign = incomingOrgID => {
+//DELETING A CAMPAIGN From specific organization
+export const DELETE_ITEMS_START = 'DELETE_ITEMS_START';
+export const DELETE_ITEMS_SUCCESS = 'DELETE_ITEMS_SUCCESS';
+export const DELETE_ITEMS_ERROR = 'DELETE_ITEMS_ERROR';
+
+export const deleteCampaign = (item, incomingOrgID) => {
   return dispatch => {
-    dispatch({ type: 'LOADING_DELETE' });
+    dispatch({ type: DELETE_ITEMS_START });
 
     api()
-      .delete(`/api/campaigns/${incomingOrgID}`)
+      .delete(`/api/campaigns/${incomingOrgID}`, item)
       .then(res => {
-        dispatch({ type: 'DELETE_CAMPAIGN_SUCCESSFUL', payload: res.data });
-        console.log('coming from deleteCampaign:', res.data);
+        dispatch({ type: DELETE_ITEMS_SUCCESS, payload: res.data });
+        console.log(item);
       })
       .catch(err => {
-        console.log(err);
+        dispatch({ type: DELETE_ITEMS_ERROR, payload: err.error });
       });
   };
 };
 
-//FETCHING A CAMPAIGN
-export const getCampaigns = (org_id, item) => {
+//FETCHING A CAMPAIGN FOR INDIVIDUAL Organizations
+
+export const FETCH_USER_ITEMS_START = 'FETCH_USER_ITEMS_START';
+export const FETCH_USER_ITEMS_SUCCESS = 'FETCH_USER_ITEMS_SUCCESS';
+export const FETCH_USER_ITEMS_ERROR = 'FETCH_USER_ITEMS_ERROR';
+
+export const getCampaigns = () => {
   return dispatch => {
-    dispatch({ type: 'LOADING_CAMPAIGNS' });
+    dispatch({ type: FETCH_USER_ITEMS_START });
+
     api()
-      .get(`/api/organizations/${org_id}`, item)
+      .get(`/api/organizations/${localStorage.getItem('org_id')}`)
       .then(res => {
-        console.log('coming from getCampaigns', res);
-        dispatch({ type: 'CAMPAIGNS_SUCESSFULLY_FETCHED', payload: res.data });
+        console.log('coming from actions', res.data);
+        dispatch({ type: FETCH_USER_ITEMS_SUCCESS, payload: res.data });
       })
-      .catch(err => console.log('ERROR', err));
+      .catch(err => {
+        dispatch({ type: FETCH_USER_ITEMS_ERROR, payload: err.error });
+      });
   };
 };
