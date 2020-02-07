@@ -10,13 +10,13 @@ const SignupForm = ({ errors, touched, values, status }) => {
 
   useEffect(() => {
     status && setSupUsers(() => [...supUsers, status]);
-  }, [status]);
+  }, [supUsers]);
 
   return (
     <>
       <NavBar />
       <div className="fnu-signup-form-box">
-        <h1 className="fnu-signup-form-title">Create Your New Account</h1>
+        <h1 className="fnu-signup-form-title">Create New Account</h1>
         <Form className="fnu-signup-form">
           <div className="fnu-signup-inputs">
             <Field
@@ -62,14 +62,12 @@ const SignupForm = ({ errors, touched, values, status }) => {
             )}
           </div>
           <div>
-            <button className="fnu-signup-create-button">
-              Click to sign up
-            </button>
+            <button className="fnu-signup-create-button">Sign up</button>
           </div>
           <Link to="/login">
             <div>
               <button className="fnu-signup-login-button">
-                Log in if you have an account already
+                Already Have An Account
               </button>
             </div>
           </Link>

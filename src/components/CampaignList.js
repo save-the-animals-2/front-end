@@ -12,7 +12,11 @@ function CampaignList(props) {
           <Grid.Column>
             {props.campaigns.map(campaign => {
               return (
-                <CampaignThumbnail campaign={campaign} key={campaign.id} />
+                <CampaignThumbnail
+                  campaign={campaign}
+                  key={campaign.id}
+                  addToFavourite={props.addToFavourite}
+                />
               );
             })}
           </Grid.Column>
