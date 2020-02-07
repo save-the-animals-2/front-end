@@ -11,13 +11,24 @@ import {
 } from '../actions/organizationActions';
 
 const initialState = {
-  isLoading: true,
-  campaigns: [],
+  isLoading: false,
+  campaigns: {
+    id: '',
+    title: '',
+    description: '',
+    photo_url: '',
+    location: '',
+    species: '',
+    urgency_level: '',
+    funding_goal: '',
+    deadline: '',
+    org_id: '',
+    org_name: '',
+  },
   error: null,
 };
 
 export const organizationReducer = (state = initialState, action) => {
-  console.log(state);
   switch (action.type) {
     case UPDATE_CAMPAIGN_START:
       return {
