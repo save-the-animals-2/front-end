@@ -45,6 +45,18 @@ export default function NavBar() {
             </Link>
           </Button>
           &nbsp;&nbsp;&nbsp;
+          <Button color="secondary">
+            <Link to="/OrganizationDashboard" className="NavButtons">
+              Organizations
+            </Link>
+          </Button>
+          &nbsp;&nbsp;&nbsp;
+          <Button color="secondary">
+            <Link to="/OrganizationDashboardTwo" className="NavButtons">
+              Organizations Two
+            </Link>
+          </Button>
+          &nbsp;&nbsp;&nbsp;
           {!signedIn && (
             <Button color="secondary">
               <Link to="/login" className="NavButtons">
