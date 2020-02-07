@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { createCampaigns } from '../redux/actions/organizationActions';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import NavBar from './NavBar';
-import CampaignForm from './CampaignForm';
 import { getCampaigns } from '../redux/actions/organizationActions';
 import styled from 'styled-components';
+import OrganizationDashboardCard from './OrganizationDashboardCard';
+import CampaignForm from './CampaignForm';
 
 function OrganizationDashboard(props) {
+  console.log(props.campaigns);
   const StyledH1 = styled.h1`
     font-size: 2.5rem;
     font-weight: 300;
@@ -21,9 +21,17 @@ function OrganizationDashboard(props) {
 
   const Section = styled.section`
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 20%;
   `;
+
+  const CardsandCreate = styled.div`
+display:flex;
+width:100%
+flex-wrap:wrap
+`;
 
   useEffect(() => {
     props.getCampaigns();
@@ -39,12 +47,19 @@ function OrganizationDashboard(props) {
       ) : (
         <div>
           <StyledDiv>
-            <StyledH1>Welcome to your Account</StyledH1>
+            <StyledH1>Welcome to your Account !</StyledH1>
           </StyledDiv>
+          <CardsandCreate>
+            <CampaignForm />
 
-          <Section>{/* card will be here */}</Section>
-
-          <CampaignForm />
+            <Section>
+              {props.campaigns.map(item => (
+                <div key={item.id}>
+                  <OrganizationDashboardCard data={item} />
+                </div>
+              ))}
+            </Section>
+          </CardsandCreate>
         </div>
       )}
     </div>

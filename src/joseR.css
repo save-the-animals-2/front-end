@@ -7,3 +7,50 @@
 .joseSbuttonCard {
   width: 100%;
 }
+.itemCard {
+  max-width: 550px;
+  /* height: 235px; */
+  max-height: 520px;
+  border-radius: 5px;
+  box-shadow: 0 19px 10px rgba(51, 51, 51, 0.12);
+  background-color: #ffffff;
+  z-index: 2;
+  position: relative;
+  margin-left: 300px;
+}
+
+.Styling-CardGroups {
+  width: 90%;
+  display: flex;
+  flex-flow: row wrap;
+  margin-left: 5%;
+}
+
+.CardHeader-Items {
+  background-color: #efe2ba;
+}
+
+.hidden {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+
+.card-image {
+  width: 60%;
+  margin: 2% 0;
+}
+.Buttons {
+  display: flex;
+  justify-content: space-around;
+}
+.Items-Buttons {
+  background-color: #4056a1;
+  color: #efe2ba;
+}
+.Items-Buttons:hover {
+  background-color: #f13c20;
+  color: white;
+}

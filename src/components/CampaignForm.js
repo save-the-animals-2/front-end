@@ -218,6 +218,7 @@ const FormikCampaignForm = withFormik({
         console.log('Success:', response);
         setStatus(response.data);
         resetForm();
+        window.location.reload();
       })
       .catch(error => console.log('Error:', error));
   },

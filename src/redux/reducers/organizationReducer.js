@@ -2,9 +2,6 @@ import {
   UPDATE_CAMPAIGN_START,
   UPDATE_CAMPAIGN_SUCCESS,
   UPDATE_CAMPAIGN_ERROR,
-  DELETE_ITEMS_START,
-  DELETE_ITEMS_SUCCESS,
-  DELETE_ITEMS_ERROR,
   FETCH_USER_ITEMS_START,
   FETCH_USER_ITEMS_SUCCESS,
   FETCH_USER_ITEMS_ERROR,
@@ -12,19 +9,21 @@ import {
 
 const initialState = {
   isLoading: false,
-  campaigns: {
-    id: '',
-    title: '',
-    description: '',
-    photo_url: '',
-    location: '',
-    species: '',
-    urgency_level: '',
-    funding_goal: '',
-    deadline: '',
-    org_id: '',
-    org_name: '',
-  },
+  campaigns: [
+    {
+      id: '',
+      title: '',
+      description: '',
+      photo_url: '',
+      location: '',
+      species: '',
+      urgency_level: '',
+      funding_goal: '',
+      deadline: '',
+      org_id: '',
+      org_name: '',
+    },
+  ],
   error: null,
 };
 
@@ -47,23 +46,7 @@ export const organizationReducer = (state = initialState, action) => {
         error: action.payload,
         isLoading: false,
       };
-    case DELETE_ITEMS_START:
-      return {
-        ...state,
-        isLoading: true,
-      };
-    case DELETE_ITEMS_SUCCESS:
-      return {
-        ...state,
-        deletedItem: action.payload,
-        isLoading: false,
-      };
-    case DELETE_ITEMS_ERROR:
-      return {
-        ...state,
-        error: action.payload,
-        isLoading: false,
-      };
+
     case FETCH_USER_ITEMS_START:
       return {
         ...state,
