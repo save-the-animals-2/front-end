@@ -8,19 +8,6 @@ import api from '../utils/api';
 function CampaignForm({ errors, touched, values, status }) {
   const [campaign, setCampaign] = useState([]);
 
-  const [update, setUpdated] = useState({
-    title: '',
-    description: '',
-    photo_url:
-      'https://cms.fauna-flora.org/wp-content/uploads/2017/11/conserving-migrating-raptors-in-western-georgia-2000x1200.jpg',
-    location: '',
-    species: '',
-    urgency_level: '',
-    funding_goal: '',
-    deadline: '',
-    org_id: localStorage.getItem('org_id'),
-  });
-
   useEffect(() => {
     status && setCampaign(() => [...campaign, status]);
     console.log(campaign);
@@ -138,7 +125,7 @@ function CampaignForm({ errors, touched, values, status }) {
           {touched.deadline && errors.deadline && <p>{errors.deadline}</p>}
 
           <button className="trevor-button" type="submit">
-            Create Campaign
+            Create
           </button>
         </Form>
       </div>

@@ -8,9 +8,9 @@
   width: 100%;
 }
 .itemCard {
-  max-width: 550px;
+  max-width: 800px;
   /* height: 235px; */
-  max-height: 520px;
+  max-height: 800px;
   border-radius: 5px;
   box-shadow: 0 19px 10px rgba(51, 51, 51, 0.12);
   background-color: #ffffff;
@@ -20,10 +20,9 @@
 }
 
 .Styling-CardGroups {
-  width: 90%;
+  width: 100%;
   display: flex;
   flex-flow: row wrap;
-  margin-left: 5%;
 }
 
 .CardHeader-Items {
@@ -35,7 +34,7 @@
 }
 
 .show {
-  display: block;
+  display: inline-block;
 }
 
 .card-image {
@@ -49,8 +48,18 @@
 .Items-Buttons {
   background-color: #4056a1;
   color: #efe2ba;
+  margin-top: 2%;
 }
 .Items-Buttons:hover {
   background-color: #f13c20;
   color: white;
+}
+
+.SaveEditButton {
+  margin-bottom: 1.5%;
+  margin-right: 2%;
+}
+
+.individualCards {
+  width: 50%;
 }

@@ -7,7 +7,7 @@ import OrganizationDashboardCard from './OrganizationDashboardCard';
 import CampaignForm from './CampaignForm';
 
 function OrganizationDashboard(props) {
-  console.log(props.campaigns);
+  console.log();
   const StyledH1 = styled.h1`
     font-size: 2.5rem;
     font-weight: 300;
@@ -16,21 +16,20 @@ function OrganizationDashboard(props) {
   `;
 
   const StyledDiv = styled.div`
-    padding: 1%;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
   `;
 
   const Section = styled.section`
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    height: auto;
     flex-direction: row;
-    width: 20%;
   `;
 
-  const CardsandCreate = styled.div`
-    display: flex;
-    width: 100%;
-  `;
+  const CardsandCreate = styled.div``;
 
   useEffect(() => {
     props.getCampaigns();
@@ -38,27 +37,27 @@ function OrganizationDashboard(props) {
   return (
     <div>
       <NavBar />
+      <StyledH1>{`Welcome to your Dashboard, ${props.campaigns[0].org_name}!`}</StyledH1>
+      <h2>Make changes to your campaigns!</h2>
       {/* <CampaignList /> */}
-
       {props.userInfoError && <p>Error: {props.userInfoError}</p>}
       {props.isInfoLoading ? (
         <h1>Loading your Dashboard...</h1>
       ) : (
         <div>
           <StyledDiv>
-            <StyledH1>Welcome to your Account !</StyledH1>
-          </StyledDiv>
-          <CardsandCreate>
-            <CampaignForm />
-
             <Section>
               {props.campaigns.map(item => (
-                <div key={item.id}>
+                <div className="individualCards" key={item.id}>
                   <OrganizationDashboardCard data={item} />
                 </div>
               ))}
+
+              <CardsandCreate>
+                <CampaignForm />
+              </CardsandCreate>
             </Section>
-          </CardsandCreate>
+          </StyledDiv>
         </div>
       )}
     </div>

@@ -110,6 +110,10 @@ function OrganizationDashboardCard(props) {
                   <strong>{`Description: `}</strong>
                   <br></br>
                   {props.data.description}
+                  <br></br>
+                  <strong>{`Goal: `}</strong>
+                  <br></br>
+                  {props.data.funding_goal}
                 </CardText>
                 {toggle ? (
                   <Button
@@ -135,110 +139,117 @@ function OrganizationDashboardCard(props) {
               </CardText>
 
               <CardFooter className="Footer-Buttons">
+                {/* SaveEdits form stats here */}
+                {loggedOn && (
+                  <form onSubmit={saveEdit}>
+                    <legend>Edit Campaign:</legend>
+                    <label>
+                      Title:
+                      <input
+                        onChange={e =>
+                          setColorToEdit({
+                            ...colorToEdit,
+                            title: e.target.value,
+                          })
+                        }
+                        placeholder="Enter Title Here:"
+                        value={colorToEdit.title}
+                      />
+                    </label>
+                    <label>
+                      Description:
+                      <input
+                        onChange={e =>
+                          setColorToEdit({
+                            ...colorToEdit,
+                            description: e.target.value,
+                          })
+                        }
+                        value={colorToEdit.description}
+                      />
+                    </label>
+                    <label>
+                      Location:
+                      <input
+                        onChange={e =>
+                          setColorToEdit({
+                            ...colorToEdit,
+                            location: e.target.value,
+                          })
+                        }
+                        value={colorToEdit.location}
+                      />
+                    </label>
+                    <label>
+                      Species:
+                      <input
+                        onChange={e =>
+                          setColorToEdit({
+                            ...colorToEdit,
+                            species: e.target.value,
+                          })
+                        }
+                        value={colorToEdit.species}
+                      />
+                    </label>
+                    <label>
+                      Deadline:
+                      <input
+                        onChange={e =>
+                          setColorToEdit({
+                            ...colorToEdit,
+                            deadline: e.target.value,
+                          })
+                        }
+                        value={colorToEdit.deadline}
+                      />
+                    </label>
+                    <label>
+                      Urgency level(select 1 -10):
+                      <input
+                        onChange={e =>
+                          setColorToEdit({
+                            ...colorToEdit,
+                            urgency_level: e.target.value,
+                          })
+                        }
+                        value={colorToEdit.urgency_level}
+                      />
+                    </label>
+                    <label>
+                      Funding goal(Enter number):
+                      <input
+                        onChange={e =>
+                          setColorToEdit({
+                            ...colorToEdit,
+                            funding_goal: e.target.value,
+                          })
+                        }
+                        value={colorToEdit.funding_goal}
+                      />
+                    </label>
+                    <div className="button-row">
+                      <Button type="submit" className="SaveEditButton">
+                        Save Edit
+                      </Button>
+                      <Button
+                        onClick={`Cancel edit${() => {
+                          return <div className="hidden">cansel</div>;
+                        }}`}
+                      >
+                        Cancel Edit
+                      </Button>
+                    </div>
+                  </form>
+                )}
                 <div>
                   {loggedOn && (
                     <Button onClick={deleteItem} className="Items-Buttons">
-                      Delete
+                      Delete Campaign
                     </Button>
                   )}
                 </div>
-                {/* here ill put the button */}
               </CardFooter>
-              {/* SaveEdits form stats here */}
-              {loggedOn && (
-                <form onSubmit={saveEdit}>
-                  <legend>Edit Campaign:</legend>
-                  <label>
-                    Title:
-                    <input
-                      onChange={e =>
-                        setColorToEdit({
-                          ...colorToEdit,
-                          title: e.target.value,
-                        })
-                      }
-                      placeholder="Enter Title Here:"
-                      value={colorToEdit.title}
-                    />
-                  </label>
-                  <label>
-                    Description:
-                    <input
-                      onChange={e =>
-                        setColorToEdit({
-                          ...colorToEdit,
-                          description: e.target.value,
-                        })
-                      }
-                      value={colorToEdit.description}
-                    />
-                  </label>
-                  <label>
-                    Location:
-                    <input
-                      onChange={e =>
-                        setColorToEdit({
-                          ...colorToEdit,
-                          location: e.target.value,
-                        })
-                      }
-                      value={colorToEdit.location}
-                    />
-                  </label>
-                  <label>
-                    Species:
-                    <input
-                      onChange={e =>
-                        setColorToEdit({
-                          ...colorToEdit,
-                          species: e.target.value,
-                        })
-                      }
-                      value={colorToEdit.species}
-                    />
-                  </label>
-                  <label>
-                    Deadline:
-                    <input
-                      onChange={e =>
-                        setColorToEdit({
-                          ...colorToEdit,
-                          deadline: e.target.value,
-                        })
-                      }
-                      value={colorToEdit.deadline}
-                    />
-                  </label>
-                  <label>
-                    Urgency level(select 1 -10):
-                    <input
-                      onChange={e =>
-                        setColorToEdit({
-                          ...colorToEdit,
-                          urgency_level: e.target.value,
-                        })
-                      }
-                      value={colorToEdit.urgency_level}
-                    />
-                  </label>
-                  <label>
-                    Funding goal(Enter number):
-                    <input
-                      onChange={e =>
-                        setColorToEdit({
-                          ...colorToEdit,
-                          funding_goal: e.target.value,
-                        })
-                      }
-                      value={colorToEdit.funding_goal}
-                    />
-                  </label>
-                  <div className="button-row">
-                    <button type="submit">Click To Save</button>
-                    <button onClick={() => setEditing(false)}>cancel</button>
-                  </div>
-                </form>
-              )}
             </IDiv>
           </CardBody>
         </CardGroup>
