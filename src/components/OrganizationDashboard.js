@@ -16,22 +16,21 @@ function OrganizationDashboard(props) {
   `;
 
   const StyledDiv = styled.div`
-    padding: 5%;
+    padding: 1%;
   `;
 
   const Section = styled.section`
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     flex-wrap: wrap;
     flex-direction: row;
     width: 20%;
   `;
 
   const CardsandCreate = styled.div`
-display:flex;
-width:100%
-flex-wrap:wrap
-`;
+    display: flex;
+    width: 100%;
+  `;
 
   useEffect(() => {
     props.getCampaigns();
