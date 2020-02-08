@@ -59,7 +59,7 @@ export default function NavBar(props) {
           </Button>
           &nbsp;&nbsp;&nbsp;
           <Button color="secondary">
-            <Link to="/OrganizationDashboardTwo" className="NavButtons">
+            <Link to="/organizationTwo" className="NavButtons">
               Organizations Two
             </Link>
           </Button>

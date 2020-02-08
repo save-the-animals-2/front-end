@@ -23,7 +23,10 @@ const SuperSignUpDiv = styled.div`
 const FooterDiv = styled.footer`
   background-color: #d3d3d3;
   margin-top: 10%;
+  margin-bottom: 0.5%;
   border-radius: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 `;
 
 export default function HomePage() {
@@ -86,12 +89,6 @@ export default function HomePage() {
         </div>
       </SuperSignUpDiv>
       <FooterDiv>
-        <p>
-          <strong>KEY</strong>
-        </p>
-        <p>
-          <strong>Address:</strong>
-        </p>
         <p>
           11 SE. Wentworth St.<br></br>Wonderland,Forever 01156
         </p>

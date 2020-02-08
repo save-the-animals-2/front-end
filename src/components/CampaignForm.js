@@ -16,7 +16,7 @@ function CampaignForm({ errors, touched, values, status }) {
 
   return (
     <div>
-      <NavBar />
+      {/* <NavBar /> */}
       <div className="trevor-form-container">
         <Form className="trevor-form">
           <h1>Create new Campaign!</h1>

@@ -12,18 +12,27 @@ function OrganizationDashboard(props) {
     font-size: 2.5rem;
     font-weight: 300;
     color: #00cccc;
-    margin: 0 0 24px;
+    // margin: 0 0 24px;
+    margin-left: 2%;
+    margin-bottom: 2%;
+  `;
+
+  const StyledH2 = styled.h2`
+    margin-left: 5%;
   `;
 
   const StyledDiv = styled.div`
     display: flex;
     width: 100%;
     flex-direction: column;
+    margin-bottom: 3%;
   `;
 
   const Section = styled.section`
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: -2%;
     width: 100%;
     height: auto;
     flex-direction: row;
@@ -38,7 +47,7 @@ function OrganizationDashboard(props) {
     <div>
       <NavBar />
       <StyledH1>{`Welcome to your Dashboard, ${props.campaigns[0].org_name}!`}</StyledH1>
-      <h2>Make changes to your campaigns!</h2>
+      <StyledH2>Make changes to your campaigns!</StyledH2>
       {/* <CampaignList /> */}
       {props.userInfoError && <p>Error: {props.userInfoError}</p>}
       {props.isInfoLoading ? (
@@ -52,11 +61,10 @@ function OrganizationDashboard(props) {
                   <OrganizationDashboardCard data={item} />
                 </div>
               ))}
-
-              <CardsandCreate>
-                <CampaignForm />
-              </CardsandCreate>
             </Section>
+            <CardsandCreate>
+              <CampaignForm />
+            </CardsandCreate>
           </StyledDiv>
         </div>
       )}
