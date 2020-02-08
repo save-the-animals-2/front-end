@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { createCampaigns } from '../redux/actions/organizationActions';
-import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import NavBar from './NavBar';
-import CampaignForm from './CampaignForm';
 import { getCampaigns } from '../redux/actions/organizationActions';
 import styled from 'styled-components';
+import OrganizationDashboardCard from './OrganizationDashboardCard';
+import CampaignForm from './CampaignForm';
 
 function OrganizationDashboard(props) {
+  console.log();
   const StyledH1 = styled.h1`
     font-size: 2.5rem;
     font-weight: 300;
@@ -16,14 +16,20 @@ function OrganizationDashboard(props) {
   `;
 
   const StyledDiv = styled.div`
-    padding: 5%;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
   `;
 
   const Section = styled.section`
     display: flex;
-    flex-direction: row;
     justify-content: space-around;
+    width: 100%;
+    height: auto;
+    flex-direction: row;
   `;
+
+  const CardsandCreate = styled.div``;
 
   useEffect(() => {
     props.getCampaigns();
@@ -31,20 +37,27 @@ function OrganizationDashboard(props) {
   return (
     <div>
       <NavBar />
+      <StyledH1>{`Welcome to your Dashboard, ${props.campaigns[0].org_name}!`}</StyledH1>
+      <h2>Make changes to your campaigns!</h2>
       {/* <CampaignList /> */}
-
       {props.userInfoError && <p>Error: {props.userInfoError}</p>}
       {props.isInfoLoading ? (
         <h1>Loading your Dashboard...</h1>
       ) : (
         <div>
           <StyledDiv>
-            <StyledH1>Welcome to your Account</StyledH1>
+            <Section>
+              {props.campaigns.map(item => (
+                <div className="individualCards" key={item.id}>
+                  <OrganizationDashboardCard data={item} />
+                </div>
+              ))}
+
+              <CardsandCreate>
+                <CampaignForm />
+              </CardsandCreate>
+            </Section>
           </StyledDiv>
-
-          <Section>{/* card will be here */}</Section>
-
-          <CampaignForm />
         </div>
       )}
     </div>
