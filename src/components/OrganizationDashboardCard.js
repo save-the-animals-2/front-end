@@ -18,6 +18,7 @@ const SDiv = styled.div`
   border: 2px solid #33d2ff;
   margin-left: 100px;
   background: white;
+  padding-bottom: 1110px;
 
   // Don't want pointer over whole card no more
   // &:hover {

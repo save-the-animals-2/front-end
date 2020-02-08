@@ -25,8 +25,14 @@ function App() {
       <Route path="/campaigns" component={CampaignsPage} />
       <ProtectedRoute path="/campaignform" component={CampaignForm} />
       <ProtectedRoute path="/logout" component={Logout} />
-      <Route path="/organizationtwo" component={OrganizationDashboardTwo} />
-      <Route path="/orgdashcard/:id" component={OrganizationDashboardTwoCard} />
+      <ProtectedRoute
+        path="/organizationtwo"
+        component={OrganizationDashboardTwo}
+      />
+      <ProtectedRoute
+        path="/orgdashcard/:id"
+        component={OrganizationDashboardTwoCard}
+      />
     </div>
   );
 }
