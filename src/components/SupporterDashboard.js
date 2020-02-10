@@ -2,22 +2,26 @@ import React, { useState, useEffect } from 'react';
 import NavBar from './NavBar';
 import CampaignList from './CampaignList';
 import { connect } from 'react-redux';
-import { fetchFavCampaigns } from '../redux/actions/supporterActions';
+import {
+  fetchFavCampaigns,
+  deleteFavCampaign,
+} from '../redux/actions/supporterActions';
 
 function SupporterDashboard(props) {
-  const [favCampaigns, setFavCampaigns] = useState([]);
-
-  // const id = localStorage.getItem('id')
+  //  console.log("PROPRS:", props)
 
   useEffect(() => {
     props.fetchFavCampaigns(props.match.params.id);
-  }, [props.match.params.id]);
+  }, [props.match.params.id, props.isDeleting]);
 
   return (
     <div>
       <NavBar />
       Hello User! Liked Campaigns
-      {/* <CampaignList /> */}
+      <CampaignList
+        favCampaigns={props.favCampaigns}
+        deleteFavCampaign={props.deleteFavCampaign}
+      />
     </div>
   );
 }
@@ -26,9 +30,11 @@ function SupporterDashboard(props) {
 const mapStateToProps = state => {
   return {
     favCampaigns: state.supporterReducer.favCampaigns,
+    isDeleting: state.supporterReducer.isDeleting,
   };
 };
 
-export default connect(mapStateToProps, { fetchFavCampaigns })(
-  SupporterDashboard
-);
+export default connect(mapStateToProps, {
+  fetchFavCampaigns,
+  deleteFavCampaign,
+})(SupporterDashboard);

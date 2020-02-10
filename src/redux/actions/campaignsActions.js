@@ -21,7 +21,7 @@ export const addToFavourite = (id, campId) => {
     dispatch({ type: 'ADD_TO_FAVOURITE' });
 
     api()
-      .post(`/api/users/${id}/favorites/`, { campaign_id: 2 }) //attach id in the url
+      .post(`/api/users/${id}/favorites/`, { campaign_id: 1 }) //attach id in the url
       .then(res => {
         dispatch({
           type: 'ADD_TO_FAVOURITE_CAMPAIGN_SUCCESSFUL',

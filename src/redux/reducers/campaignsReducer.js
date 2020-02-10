@@ -1,10 +1,8 @@
 export const initialState = {
   campaigns: [],
   isLoading: false,
-  campId: {
-    campaign_id: '',
-  },
   isAdding: false,
+  campId: {},
 };
 
 export const campaignsReducer = (state = initialState, action) => {
@@ -22,10 +20,8 @@ export const campaignsReducer = (state = initialState, action) => {
       return {
         ...state,
         isAdding: false,
-        campId: {
-          campaign_id: action.payload,
-        },
       };
+
     default:
       return state;
   }
