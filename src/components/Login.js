@@ -76,14 +76,15 @@ const FormikLoginForm = withFormik({
   handleSubmit(values, { setStatus, resetForm, props }) {
     console.log('Submitting form', values);
     api()
-      .post('https://save-the-animals-app.herokuapp.com/api/login', values)
+      .post('/api/login', values)
       .then(res => {
         console.log('Success:', res);
         setStatus(res.data.user.user_type);
         resetForm();
         localStorage.setItem('token', res.data.token);
+        localStorage.setItem('id', res.data.user.id);
         localStorage.setItem('org_id', res.data.user.org_id);
-        props.history.push(`/${res.data.user.user_type}`);
+        props.history.push(`/${res.data.user.user_type}/${res.data.user.id}`);
       })
       .catch(err => {
         console.log('Error:', err.response);

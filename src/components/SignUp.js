@@ -131,6 +131,7 @@ const FormikSignupForm = withFormik({
           setStatus(res.data);
           resetForm();
           localStorage.setItem('token', res.data.token);
+          localStorage.setItem('id', res.data.id);
           props.history.push('/');
         })
         .catch(err => {

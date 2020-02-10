@@ -20,16 +20,17 @@ function CampaignsPage(props) {
       <CampaignList
         campaigns={props.campaigns}
         addToFavourite={props.addToFavourite}
+        campId={props.campId}
       />
     </div>
   );
 }
 
 const mapStateToProps = state => {
-  console.log('State:', state);
+  // console.log('State:', state);
   return {
     campaigns: state.campaignsReducer.campaigns,
-    favCampaign: state.campaignsReducer.favCampaign,
+    campId: state.campaignsReducer.campId,
   };
 };
 
