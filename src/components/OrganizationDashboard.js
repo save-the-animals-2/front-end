@@ -24,18 +24,17 @@ function OrganizationDashboard(props) {
   const StyledDiv = styled.div`
     display: flex;
     width: 100%;
-    flex-direction: column;
+    flex-direction: row;
     margin-bottom: 3%;
+    border: solid red 2px;
   `;
 
   const Section = styled.section`
     display: flex;
     justify-content: center;
-    margin-top: 5%;
+    margin-top: 1%;
     margin-bottom: -2%;
     width: 100%;
-    height: auto;
-    flex-direction: row;
   `;
 
   const CardsandCreate = styled.div``;
@@ -57,11 +56,12 @@ function OrganizationDashboard(props) {
           <StyledDiv>
             <Section>
               {props.campaigns.map(item => (
-                <div className="individualCards" key={item.id}>
+                <div key={item.id}>
                   <OrganizationDashboardCard data={item} />
                 </div>
               ))}
             </Section>
+            {/* Rendering form coming from Campaign Form here */}
             <CardsandCreate>
               <CampaignForm />
             </CardsandCreate>

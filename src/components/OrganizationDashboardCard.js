@@ -62,14 +62,12 @@ function OrganizationDashboardCard(props) {
 
   const saveEdit = e => {
     e.preventDefault();
-    window.location.reload();
-    // Make a put request to save your updated color
-    // think about where will you get the id from...
-    // where is is saved right now?
+
     api()
       .put(`/api/campaigns/${props.data.id}`, colorToEdit)
       .then(res => {
         console.log('coming from saveEdit', res);
+        window.location.reload();
       })
       .catch(err => {
         console.log('error from ColorList', err);
@@ -99,7 +97,6 @@ function OrganizationDashboardCard(props) {
                   <strong>{`Location: `}</strong>
                   {props.data.location}
                   <br />
-                  {''}
                 </CardText>
                 <CardText>
                   <strong>{`Organization Name: `}</strong>
@@ -108,9 +105,6 @@ function OrganizationDashboardCard(props) {
                   <strong>{`Species: `}</strong>
                   <br></br>
                   {props.data.species} <br></br>
-                  <strong>{`Description: `}</strong>
-                  <br></br>
-                  {props.data.description}
                   <br></br>
                   <strong>{`Goal: `}</strong>
                   <br></br>
@@ -135,14 +129,15 @@ function OrganizationDashboardCard(props) {
             </div>
             <IDiv className={toggle ? 'hidden' : 'show'}>
               <CardText>
-                <br />
-                {''}
+                <strong>{`Description: `}</strong>
+                <br></br>
+                {props.data.description}
               </CardText>
 
               <CardFooter className="Footer-Buttons">
                 {/* SaveEdits form stats here */}
                 {loggedOn && (
-                  <form onSubmit={saveEdit}>
+                  <form>
                     <legend>Edit Campaign:</legend>
                     <label>
                       Title:
@@ -230,12 +225,17 @@ function OrganizationDashboardCard(props) {
                       />
                     </label>
                     <div className="button-row">
-                      <Button type="submit" className="SaveEditButton">
+                      <Button
+                        onClick={saveEdit}
+                        type="submit"
+                        className="SaveEditButton"
+                      >
                         Save Edit
                       </Button>
                       <Button
+                        type="submit"
                         onClick={`Cancel edit${() => {
-                          return <div className="hidden">cansel</div>;
+                          return <div className="hidden"></div>;
                         }}`}
                       >
                         Cancel Edit
