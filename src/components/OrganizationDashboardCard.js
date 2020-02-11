@@ -39,7 +39,7 @@ function OrganizationDashboardCard(props) {
   const [colorToEdit, setColorToEdit] = useState(props.data);
   const [editing, setEditing] = useState(false);
   //states to handle edit form ENDS here
-  console.log(colorToEdit);
+
   const loggedOn = api();
 
   const toggleOpen = () => {
@@ -154,7 +154,7 @@ function OrganizationDashboardCard(props) {
                     </label>
                     <label>
                       Description:
-                      <input
+                      <textarea
                         onChange={e =>
                           setColorToEdit({
                             ...colorToEdit,
@@ -162,6 +162,7 @@ function OrganizationDashboardCard(props) {
                           })
                         }
                         value={colorToEdit.description}
+                        placeholder="Enter Description Here:"
                       />
                     </label>
                     <label>
@@ -174,6 +175,7 @@ function OrganizationDashboardCard(props) {
                           })
                         }
                         value={colorToEdit.location}
+                        placeholder="Enter Location Here:"
                       />
                     </label>
                     <label>
@@ -186,6 +188,7 @@ function OrganizationDashboardCard(props) {
                           })
                         }
                         value={colorToEdit.species}
+                        placeholder="Enter Species Here:"
                       />
                     </label>
                     <label>
@@ -198,6 +201,7 @@ function OrganizationDashboardCard(props) {
                           })
                         }
                         value={colorToEdit.deadline}
+                        placeholder="Enter Deadline Here:"
                       />
                     </label>
                     <label>
@@ -210,6 +214,7 @@ function OrganizationDashboardCard(props) {
                           })
                         }
                         value={colorToEdit.urgency_level}
+                        placeholder="Enter Urgency level Here:"
                       />
                     </label>
                     <label>
@@ -222,6 +227,7 @@ function OrganizationDashboardCard(props) {
                           })
                         }
                         value={colorToEdit.funding_goal}
+                        placeholder="Enter Funding goal here:"
                       />
                     </label>
                     <div className="button-row">

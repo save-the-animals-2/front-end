@@ -26,7 +26,6 @@ function OrganizationDashboard(props) {
     width: 100%;
     flex-direction: row;
     margin-bottom: 3%;
-    border: solid red 2px;
   `;
 
   const Section = styled.section`
@@ -34,7 +33,7 @@ function OrganizationDashboard(props) {
     justify-content: center;
     margin-top: 1%;
     margin-bottom: -2%;
-    width: 100%;
+    width: 50%;
   `;
 
   const CardsandCreate = styled.div``;

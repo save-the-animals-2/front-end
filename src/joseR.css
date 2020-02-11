@@ -9,7 +9,6 @@
 }
 .itemCard {
   max-width: 800px;
-  /* height: 235px; */
   max-height: 800px;
   border-radius: 5px;
   box-shadow: 0 19px 10px rgba(51, 51, 51, 0.12);
@@ -56,6 +55,14 @@
 }
 
 .SaveEditButton {
-  margin-bottom: 1.5%;
+  margin-bottom: 1%;
   margin-right: 2%;
+}
+/*.hZXyxM is coming from an internal code coming from reacstrap that i was able to track  looking and the inspector on mozilla firefox*/
+.hZXyxM.itemCard {
+  padding-bottom: 5px;
+}
+/*.sc-AykKH.hZXyxM is coming from an internal code coming from reacstrap that i was able to track  looking and the inspector on mozilla firefox*/
+.sc-AykKH.hZXyxM {
+  padding-bottom: 5px;
 }
